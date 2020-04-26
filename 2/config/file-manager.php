@@ -25,34 +25,31 @@ return [
      * List of disk names that you want to use
      * (from config/filesystems)
      */
-    'diskList' => ['public'],
+     // You need to enter the disks you want to use in the file manager
+     'diskList'  => ['images', 'public'],
 
     /**
-     * Default disk for left manager
-     *
-     * null - auto select the first disk in the disk list
-     */
-    'leftDisk' => null,
+    * Default disk for left manager
+    * null - auto select the first disk in the disk list
+    */
+    'leftDisk'  => 'public',
 
     /**
-     * Default disk for right manager
-     *
-     * null - auto select the first disk in the disk list
-     */
+    * Default disk for right manager
+    * null - auto select the first disk in the disk list
+    */
     'rightDisk' => null,
 
     /**
-     * Default path for left manager
-     *
-     * null - root directory
-     */
-    'leftPath' => null,
+    * Default path for left manager
+    * null - root directory
+    */
+    'leftPath'  => 'directory/sub-directory',
 
     /**
-     * Default path for right manager
-     *
-     * null - root directory
-     */
+    * Default path for right manager
+    * null - root directory
+    */
     'rightPath' => null,
 
     /**
