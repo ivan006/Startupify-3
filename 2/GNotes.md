@@ -17,3 +17,6 @@ https://windows.php.net/download#php-7.0
 google: Error: Apache shutdown unexpectedly. 1:23:23 PM  [Apache] 	This may be due to a blocked port, missing dependencies,  1:23:23 PM  [Apache] 	improper privileges, a crash, or a shutdown by another method. 1:23:23 PM  [Apache] 	Press the Logs button to view error logs and check 1:23:23 PM  [Apache] 	the Windows Event Viewer for more clues 1:23:23 PM  [Apache] 	If you need more help, copy and post this 1:23:23 PM  [Apache] 	entire log window on the forums
 1 | UniSharp/laravel-filemanager  | get error when moving itesm, also moving items isnt drag and drop intuitive
 2 | spatie/laravel-medialibrary | relies on a table, doesnt even work
+
+google: Error: Request failed with status code 404  "laravel"
+https://stackoverflow.com/questions/58944168/keep-getting-404-error-for-static-json-with-axios-vue-cli
