@@ -6,15 +6,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
-
-
-
-class User extends Authenticatable implements HasMedia
+class User extends Authenticatable
 {
-    use Notifiable, InteractsWithMedia;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
