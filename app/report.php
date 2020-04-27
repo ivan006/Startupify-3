@@ -86,7 +86,33 @@ class report extends Model
       <h1>
         <?php echo $data_items_0; ?>
       </h1>
+      <hr>
       <?php
+      foreach ($data_items[$data_items_0] as $data_item_key => $data_item_value) {
+        // echo $data_item_key;
+        // echo "<br>";
+        if (is_array($data_item_value)) {
+          if ($report_object->ends_with($data_item_key, "_report") == null) {
+          } else {
+            ?>
+            <table  class="Pa_10px BoRa_10px Bo_1pxsolidgrey Wi_25Per  ">
+              <tr>
+                <td>
+                  <b>
+                    <?php echo $report_object->ends_with($data_item_key, "_report") ?>
+                  </b>
+                </td>
+
+              </tr>
+            </table>
+            <?php
+
+          }
+
+        }
+      }
+
+
       $title_html = ob_get_contents();
       ob_end_clean();
 
@@ -94,14 +120,17 @@ class report extends Model
       $subreports_html = "";
 
       $data_items_0_items = $data_items[$data_items_0];
-      foreach ($data_items_0_items as $data_items_0_items_key => $data_items_0_items_value) {
-        if (is_array($data_items_0_items_value)){
 
-          // if ($data_items_0_items_key == "ReportData") {
-          //
-            $reportdata_html =  $reportdata_html . $report_object->show_html_helper($data_items_0_items_value,1);
-          // } else {
-          //   ob_start();
+      $reportdata_html =  $reportdata_html . $report_object->show_html_helper($data_items_0_items,1);
+
+      // foreach ($data_items_0_items as $data_items_0_items_key => $data_items_0_items_value) {
+      //   if (is_array($data_items_0_items_value)){
+      //
+      //     // if ($data_items_0_items_key == "ReportData") {
+      //     //
+      //
+      //     // } else {
+      //     //   ob_start();
             ?>
             <!-- <table  class="Pa_10px BoRa_10px Bo_1pxsolidgrey Wi_25Per  ">
               <tr>
@@ -115,11 +144,11 @@ class report extends Model
             </table> -->
 
             <?php
-            // $subreports_html = $subreports_html.ob_get_contents();
-            // ob_end_clean();
-          // }
-        }
-      }
+      //       // $subreports_html = $subreports_html.ob_get_contents();
+      //       // ob_end_clean();
+      //     // }
+      //   }
+      // }
 
 
 
@@ -151,104 +180,109 @@ class report extends Model
     $data_items_item_type = array();
 
     $result_part_2 = "";
+
     foreach ($data_items as $data_item_key => $data_item_value) {
       // echo $data_item_key;
       // echo "<br>";
       if (is_array($data_item_value)) {
+        if ($report_object->ends_with($data_item_key, "_report") == null) {
+          reset($data_item_value);
+          $data_item_value_0 = key($data_item_value);
+          $data_item_value_0_value = $data_item_value[$data_item_value_0];
+          if (is_array($data_item_value_0_value)) {
+            $ItemWidth = "Wi_100Per";
+          } else {
+            $ItemWidth = "Wi_50Per";
+          }
 
-        reset($data_item_value);
-        $data_item_value_0 = key($data_item_value);
-        $data_item_value_0_value = $data_item_value[$data_item_value_0];
-        if (is_array($data_item_value_0_value)) {
-          $ItemWidth = "Wi_100Per";
-        } else {
-          $ItemWidth = "Wi_50Per";
+
+
+          ob_start();
+          ?>
+          <div class=" <?php echo $ItemWidth ?>">
+            <h<?php echo $LayerNumber ?>>
+              <?php echo $data_item_key; ?>
+            </h<?php echo $LayerNumber ?>>
+            <div class="Di_Fl Fl_Wr">
+
+              <?php echo $report_object->show_html_helper($data_item_value,$LayerNumber) ?>
+
+            </div>
+
+          </div>
+
+          <?php
+
+          $result_part_2 = $result_part_2.ob_get_contents();
+
+          ob_end_clean();
         }
 
+      }
+    }
 
 
+    $result_part_1_loose_files = "";
+    foreach ($data_items as $data_item_key => $data_item_value) {
+      if (!is_array($data_item_value)){
+
+        if ($LayerNumber < 1) {
+          $FieldWidth = "Wi_50Per";
+        } else {
+          $FieldWidth = "Wi_100Per";
+        }
         ob_start();
         ?>
-        <div class=" <?php echo $ItemWidth ?>">
-          <h<?php echo $LayerNumber ?>>
-          <?php echo $data_item_key; ?>
-        </h<?php echo $LayerNumber ?>>
-        <div class="Di_Fl Fl_Wr">
+        <table  class="Pa_10px BoRa_10px Bo_1pxsolidgrey BoSi_CoBo  <?php echo $FieldWidth ?>">
 
-          <?php echo $report_object->show_html_helper($data_item_value,$LayerNumber) ?>
+          <tr>
+            <td>
+              <b>
+                <?php echo $data_item_key; ?>
+              </b>
+            </td>
+            <td>
+              <?php echo $data_item_value ?>
+            </td>
 
-        </div>
+          </tr>
+        </table>
 
-      </div>
+        <?php
+        $result_part_1_loose_files = $result_part_1_loose_files.ob_get_contents();
 
-      <?php
+        ob_end_clean();
 
-      $result_part_2 = $result_part_2.ob_get_contents();
-
-      ob_end_clean();
-    }
-  }
-
-
-  $result_part_1_loose_files = "";
-  foreach ($data_items as $data_item_key => $data_item_value) {
-    if (!is_array($data_item_value)){
-
-      if ($LayerNumber < 1) {
-        $FieldWidth = "Wi_50Per";
-      } else {
-        $FieldWidth = "Wi_100Per";
       }
-      ob_start();
-      ?>
-      <table  class="Pa_10px BoRa_10px Bo_1pxsolidgrey BoSi_CoBo  <?php echo $FieldWidth ?>">
-
-        <tr>
-          <td>
-            <b>
-              <?php echo $data_item_key; ?>
-            </b>
-          </td>
-          <td>
-            <?php echo $data_item_value ?>
-          </td>
-
-        </tr>
-      </table>
-
-      <?php
-      $result_part_1_loose_files = $result_part_1_loose_files.ob_get_contents();
-
-      ob_end_clean();
-
     }
+
+
+
+    ob_start();
+    ?>
+    <div class="Di_Fl Fl_Wr">
+      <?php echo $result_part_1_loose_files; ?>
+    </div>
+    <?php
+    $result_part_1_loose_files = ob_get_contents();
+    ob_end_clean();
+
+
+
+    ob_start();
+    ?>
+    <div class="Di_Fl Fl_Wr">
+      <?php echo $result_part_2; ?>
+    </div>
+    <?php
+    $result_part_2 = ob_get_contents();
+    ob_end_clean();
+
+
+
+    $result = $result_part_1_loose_files.$result_part_2;
+    return $result;
   }
-
-
-
-  ob_start();
-  ?>
-  <div class="Di_Fl Fl_Wr">
-    <?php echo $result_part_1_loose_files; ?>
-  </div>
-  <?php
-  $result_part_1_loose_files = ob_get_contents();
-  ob_end_clean();
-
-
-
-  ob_start();
-  ?>
-  <div class="Di_Fl Fl_Wr">
-    <?php echo $result_part_2; ?>
-  </div>
-  <?php
-  $result_part_2 = ob_get_contents();
-  ob_end_clean();
-
-  $result = $result_part_1_loose_files.$result_part_2;
-  return $result;
-}
 
   // public static function show($ShowID) {
   public static function show_array() {
@@ -281,7 +315,7 @@ class report extends Model
 
     // $ShowLocation = PostM::ShowLocation($ShowID);
     // $ShowLocation = base_path()."/storage/app/public/";
-    $ShowLocation = storage_path()."\app\public\\";
+    $ShowLocation = storage_path()."\app\public\Blue Gem\\";
 
 
     if (is_dir($ShowLocation)) {
@@ -319,6 +353,16 @@ class report extends Model
 
   }
 
+  public function ends_with($string, $test) {
+      $strlen = strlen($string);
+      $testlen = strlen($test);
+      if ($testlen > $strlen ) {
+        return null;
+      } elseif (substr_compare($string, $test, $strlen - $testlen, $testlen) === 0) {
+        $result = str_replace($test, "",$string);
+        return $result;
+      }
+  }
 
 
 
