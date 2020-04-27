@@ -38,3 +38,4 @@ google: publish laravel on shared web hosting \
 https://dev.to/asapabedi/deploying-laravel-5-applications-on-shared-hosting-without-the-use-of-ssh--16a6
 https://medium.com/@Bohr/deploy-laravel-application-on-shared-hosting-godaddy-953758dc57ac
 https://github.com/alexusmai/laravel-file-manager/issues/45
+https://stackoverflow.com/questions/16597392/how-do-you-get-the-path-to-the-laravel-storage-folder

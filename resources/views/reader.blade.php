@@ -67,6 +67,8 @@ function reportdata($data_items, $LayerNumber){
 
   $result_part_2 = "";
   foreach ($data_items as $data_item_key => $data_item_value) {
+    // echo $data_item_key;
+    // echo "<br>";
     if (is_array($data_item_value)) {
 
       reset($data_item_value);
@@ -87,6 +89,7 @@ function reportdata($data_items, $LayerNumber){
           <?php echo $data_item_key; ?>
         </h<?php echo $LayerNumber ?>>
         <div class="Di_Fl Fl_Wr">
+
           <?php echo reportdata($data_item_value,$LayerNumber) ?>
 
         </div>
@@ -102,7 +105,7 @@ function reportdata($data_items, $LayerNumber){
   }
 
 
-  $result_part_1 = "";
+  $result_part_1_loose_files = "";
   foreach ($data_items as $data_item_key => $data_item_value) {
     if (!is_array($data_item_value)){
 
@@ -129,7 +132,7 @@ function reportdata($data_items, $LayerNumber){
           </table>
 
         <?php
-        $result_part_1 = $result_part_1.ob_get_contents();
+        $result_part_1_loose_files = $result_part_1_loose_files.ob_get_contents();
 
         ob_end_clean();
 
@@ -138,14 +141,13 @@ function reportdata($data_items, $LayerNumber){
 
 
 
-
   ob_start();
   ?>
   <div class="Di_Fl Fl_Wr">
-    <?php echo $result_part_1; ?>
+    <?php echo $result_part_1_loose_files; ?>
   </div>
   <?php
-  $result_part_1 = ob_get_contents();
+  $result_part_1_loose_files = ob_get_contents();
   ob_end_clean();
 
 
@@ -159,7 +161,7 @@ function reportdata($data_items, $LayerNumber){
   $result_part_2 = ob_get_contents();
   ob_end_clean();
 
-  $result = $result_part_1.$result_part_2;
+  $result = $result_part_1_loose_files.$result_part_2;
   return $result;
 }
 
@@ -182,25 +184,28 @@ if (!empty($data_items)) {
 
   $data_items_0_items = $data_items[$data_items_0];
   foreach ($data_items_0_items as $data_items_0_items_key => $data_items_0_items_value) {
-    if ($data_items_0_items_key == "ReportData") {
-      $reportdata_html =  reportdata($data_items_0_items_value,0);
-    } else {
-      ob_start();
-      ?>
-      <table  class="Pa_10px BoRa_10px Bo_1pxsolidgrey Wi_25Per  ">
-        <tr>
-          <td>
-            <b>
-              <?php echo $data_items_0_items_key; ?>
-            </b>
-          </td>
+    if (is_array($data_items_0_items_value)){
 
-        </tr>
-      </table>
+      // if ($data_items_0_items_key == "ReportData") {
+        $reportdata_html =  $reportdata_html . reportdata($data_items_0_items_value,1);
+      // } else {
+      //   ob_start();
+        ?>
+        <!-- <table  class="Pa_10px BoRa_10px Bo_1pxsolidgrey Wi_25Per  ">
+          <tr>
+            <td>
+              <b>
+                <?php //echo $data_items_0_items_key; ?>
+              </b>
+            </td>
 
-      <?php
-      $subreports_html = $subreports_html.ob_get_contents();
-      ob_end_clean();
+          </tr>
+        </table> -->
+
+        <?php
+        // $subreports_html = $subreports_html.ob_get_contents();
+        // ob_end_clean();
+      // }
     }
   }
 

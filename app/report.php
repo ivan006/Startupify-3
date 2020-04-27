@@ -26,7 +26,7 @@ class report extends Model
             } else {
               $this_object = new report;
               $result[$value] = $this_object->read_file($DataLocation);
-              
+
             }
           }
         }
@@ -37,7 +37,7 @@ class report extends Model
 
     // $ShowLocation = PostM::ShowLocation($ShowID);
     // $ShowLocation = base_path()."/storage/app/public/";
-    $ShowLocation = storage_path()."\app\\";
+    $ShowLocation = storage_path()."\app\public\\";
 
 
     if (is_dir($ShowLocation)) {
