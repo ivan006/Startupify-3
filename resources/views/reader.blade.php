@@ -1,5 +1,4 @@
 <?php
-
 $data_items = array(
   "Find Partner" => array(
     "Bradley Hunter" => array(),
@@ -54,6 +53,10 @@ $data_items = array(
 
   ),
 );
+// dd($var);
+// dd($data_items);
+
+$data_items = array($var);
 
 
 function reportdata($data_items, $LayerNumber){
