@@ -34,3 +34,7 @@ google: react file manager\
 google: vue js file manager\
 https://stackoverflow.com/questions/41336588/how-can-i-publish-laravel-on-shared-web-hosting-without-changing-the-directory-s
 https://stackoverflow.com/questions/55339291/axios-catch-error-request-failed-with-status-code-404
+google: publish laravel on shared web hosting \
+https://dev.to/asapabedi/deploying-laravel-5-applications-on-shared-hosting-without-the-use-of-ssh--16a6
+https://medium.com/@Bohr/deploy-laravel-application-on-shared-hosting-godaddy-953758dc57ac
+https://github.com/alexusmai/laravel-file-manager/issues/45
