@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect("/filemanager");
+  // return view('welcome');
+  // return redirect("/filemanager");
+  return redirect("/file-manager/fm-button");
 });
 
 Auth::routes();

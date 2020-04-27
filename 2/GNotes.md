@@ -24,3 +24,13 @@ https://stackoverflow.com/questions/58944168/keep-getting-404-error-for-static-j
 https://github.com/alexusmai/laravel-file-manager/blob/master/docs/installation.md
 https://stackoverflow.com/questions/41855619/how-to-remove-auth-in-laravel-php-artisan
 https://stackoverflow.com/questions/23837933/how-can-i-remove-public-index-php-in-the-url-generated-laravel
+https://packagist.org/?query=file%20managment&type=library&tags=php~laravel~file%20management
+https://github.com/catx23/xamiro
+google; file managment libraries larave;
+https://laracasts.com/discuss/channels/laravel/any-good-file-management-packages-for-laravel-5?page=1
+https://github.com/ShyPixie/cute-php-explorer
+https://laravel.com/docs/5.1/filesystem
+google: react file manager\
+google: vue js file manager\
+https://stackoverflow.com/questions/41336588/how-can-i-publish-laravel-on-shared-web-hosting-without-changing-the-directory-s
+https://stackoverflow.com/questions/55339291/axios-catch-error-request-failed-with-status-code-404
