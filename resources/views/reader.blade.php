@@ -56,7 +56,7 @@ $data_items = array(
 // dd($var);
 // dd($data_items);
 
-$data_items = array($var);
+$data_items = $var;
 
 
 function reportdata($data_items, $LayerNumber){

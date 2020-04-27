@@ -21,11 +21,12 @@ class report extends Model
             $DataLocation = $ShowLocation . "/" . $value;
 
             if (is_dir($DataLocation)){
-              
+
               $result[$value] = ShowHelper($DataLocation);
             } else {
               $this_object = new report;
               $result[$value] = $this_object->read_file($DataLocation);
+              
             }
           }
         }
@@ -41,7 +42,7 @@ class report extends Model
 
     if (is_dir($ShowLocation)) {
 
-      $Show =   ShowHelper($ShowLocation);
+      $Show =   array(basename($ShowLocation) => ShowHelper($ShowLocation));
 
       return $Show;
     }
