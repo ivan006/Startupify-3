@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class report extends Model
 {
-  public static function show() {
+  public static function show($GET) {
     $report_object = new report;
-    $array = $report_object->show_array();
+    $array = $report_object->show_array($GET);
     $html = $report_object->show_html($array);
     return $html;
   }
@@ -99,7 +99,9 @@ class report extends Model
               <tr>
                 <td>
                   <b>
-                    <?php echo $report_object->ends_with($data_item_key, "_report") ?>
+                    <a href="/reader/?1=<?php echo $data_item_key ?>">
+                      <?php echo $report_object->ends_with($data_item_key, "_report") ?>
+                    </a>
                   </b>
                 </td>
 
@@ -285,7 +287,7 @@ class report extends Model
   }
 
   // public static function show($ShowID) {
-  public static function show_array() {
+  public static function show_array($GET) {
 
     if(!function_exists('App\ShowHelper')){
       function ShowHelper($ShowLocation) {
@@ -315,7 +317,14 @@ class report extends Model
 
     // $ShowLocation = PostM::ShowLocation($ShowID);
     // $ShowLocation = base_path()."/storage/app/public/";
-    $ShowLocation = storage_path()."\app\public\Blue Gem\\";
+    $URI = "";
+    if (!empty($GET)) {
+      foreach ($GET as $key => $value) {
+        $URI = $URI."\\".$value;
+      }
+    }
+
+    $ShowLocation = storage_path()."\app\public\Blue Gem".$URI."\\";
 
 
     if (is_dir($ShowLocation)) {

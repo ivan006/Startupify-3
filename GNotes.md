@@ -39,3 +39,6 @@ https://dev.to/asapabedi/deploying-laravel-5-applications-on-shared-hosting-with
 https://medium.com/@Bohr/deploy-laravel-application-on-shared-hosting-godaddy-953758dc57ac
 https://github.com/alexusmai/laravel-file-manager/issues/45
 https://stackoverflow.com/questions/16597392/how-do-you-get-the-path-to-the-laravel-storage-folder
+https://stackoverflow.com/questions/619610/whats-the-most-efficient-test-of-whether-a-php-string-ends-with-another-string?lq=1
+https://stackoverflow.com/questions/619610/whats-the-most-efficient-test-of-whether-a-php-string-ends-with-another-string
+https://stackoverflow.com/questions/2192170/how-to-remove-part-of-a-string
