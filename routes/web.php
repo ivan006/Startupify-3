@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/reader', function () {
-  return view('reader');
-});
+// Route::get('/reader', function () {
+//   return view('reader');
+// });
+
+Route::get('/reader', 'report_c@show');
