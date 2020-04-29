@@ -42,3 +42,4 @@ https://stackoverflow.com/questions/16597392/how-do-you-get-the-path-to-the-lara
 https://stackoverflow.com/questions/619610/whats-the-most-efficient-test-of-whether-a-php-string-ends-with-another-string?lq=1
 https://stackoverflow.com/questions/619610/whats-the-most-efficient-test-of-whether-a-php-string-ends-with-another-string
 https://stackoverflow.com/questions/2192170/how-to-remove-part-of-a-string
+https://stackoverflow.com/questions/20984874/how-to-make-a-smaller-container-in-bootstrap

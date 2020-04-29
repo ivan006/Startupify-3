@@ -17,62 +17,6 @@ class report extends Model
   public function show_html($var) {
     $report_object = new report;
 
-    $data_items = array(
-      "Find Partner" => array(
-        "Bradley Hunter" => array(),
-        "Marie Bennett" => array(),
-        "Diana Wells" => array(),
-        "Christopher Pierce" => array(),
-        "ReportData"=>array(
-          "Contact"=> array(
-            "Telephone"=> "(000) 000-0000",
-            "Email"=> "dreamshare@email.com",
-          ),
-          "1"=> "Share your holiday dream",
-          "2"=> "And find the perfect partner to fulfill it",
-          "3"=> "Find your holiday partner",
-          "Meet a partner for your best holiday"=> array(
-            "Bradley Hunter" => array(
-              "Overview"=>  "Based in Chicago, I love playing tennis and loud music.",
-              "Photo.jpeg"=> "assets\partner1.jpg",
-            ),
-            "Marie Bennett" => array(
-              "Overview"=> "Currently living in Colorado. Lover of art, language and travelling.",
-              "Photo.jpeg"=> "assets\partner2.jpg",
-            ),
-            "Diana Wells" => array(
-              "Overview"=> "Living in Athens, Greece. I love black and white classics, chillout music and green tea.",
-              "Photo.jpeg"=> "assets\partner3.jpg",
-            ),
-            "Christopher Pierce" => array(
-              "Overview"=> "Star Wars fanatic. I have a persistent enthusiasm to create new things.",
-              "Photo.jpeg"=> "assets\partner4.jpg",
-            ),
-          ),
-          "Discover holiday activity ideas" => array(
-            "1" => array(
-              "Overview"=> "Sports",
-              "Photo.jpeg"=> "assets\block1Sports.jpg",
-            ),
-            "2" => array(
-              "Overview"=> "Wellness and Health",
-              "Photo.jpeg"=> "assets\block2Wellness.jpg",
-            ),
-            "3" => array(
-              "Overview"=> "Expeditions",
-              "Photo.jpeg"=> "assets\block3Expeditions.jpg",
-            ),
-            "4" => array(
-              "Overview"=> "Games",
-              "Photo.jpeg"=> "assets\block4Games.jpg",
-            ),
-          ),
-        ),
-
-      ),
-    );
-    // dd($var);
-    // dd($data_items);
 
     $data_items = $var;
 
@@ -81,12 +25,27 @@ class report extends Model
       reset($data_items);
       $data_items_0 = key($data_items);
 
+      $GET = $_GET;
+      array_pop($GET);
+
+      $link = "";
+      $separator = "?";
+      $i = 1;
+      foreach ($GET as $key => $value) {
+        // echo $key."zzz";
+        $link = $link.$separator.$i."=".$value;
+        if ($key > 0) {
+          $separator = "&";
+        }
+        $i = $i+1;
+      }
 
       ob_start();
       ?>
-      <h1>
-        <?php echo $data_items_0; ?>
+      <h1 class="my-3">
+        <?php echo $report_object->ends_with($data_items_0, "_report") ?>
       </h1>
+      <a href="/reader/<?php echo $link ?>">Back</a>
       <hr>
       <?php
       foreach ($data_items[$data_items_0] as $data_item_key => $data_item_value) {
@@ -95,19 +54,44 @@ class report extends Model
         if (is_array($data_item_value)) {
           if ($report_object->ends_with($data_item_key, "_report") == null) {
           } else {
-            ?>
-            <table  class="Pa_10px BoRa_10px Bo_1pxsolidgrey Wi_25Per  ">
-              <tr>
-                <td>
-                  <b>
-                    <a href="/reader/?1=<?php echo $data_item_key ?>">
-                      <?php echo $report_object->ends_with($data_item_key, "_report") ?>
-                    </a>
-                  </b>
-                </td>
 
-              </tr>
-            </table>
+
+            $GET = $_GET;
+
+            $link = "";
+            $separator = "?";
+            $i = 1;
+            foreach ($GET as $key => $value) {
+              // echo $key."zzz";
+              $link = $link.$separator.$i."=".$value;
+              if ($key > 0) {
+                $separator = "&";
+              }
+              $i = $i+1;
+            }
+
+            $link = $link.$separator.$i."=".$data_item_key;
+            ?>
+            <div class="row">
+
+              <div class="col-md-3">
+                <!-- <table  class="rounded border border-secondary w-100" style="border-collapse: separate;"> -->
+                <table  class="p-2 rounded w-100" style="border-collapse: separate;">
+                  <tr>
+                    <td class="p-2">
+                      <b>
+                        <a href="/reader/<?php echo $link ?>">
+                          <?php echo $report_object->ends_with($data_item_key, "_report") ?>
+                        </a>
+                      </b>
+                    </td>
+
+                  </tr>
+                </table>
+
+              </div>
+            </div>
+            <hr>
             <?php
 
           }
@@ -120,55 +104,26 @@ class report extends Model
       ob_end_clean();
 
       $reportdata_html = "";
-      $subreports_html = "";
 
       $data_items_0_items = $data_items[$data_items_0];
 
       $reportdata_html =  $reportdata_html . $report_object->show_html_helper($data_items_0_items,1);
 
-      // foreach ($data_items_0_items as $data_items_0_items_key => $data_items_0_items_value) {
-      //   if (is_array($data_items_0_items_value)){
-      //
-      //     // if ($data_items_0_items_key == "ReportData") {
-      //     //
-      //
-      //     // } else {
-      //     //   ob_start();
-            ?>
-            <!-- <table  class="Pa_10px BoRa_10px Bo_1pxsolidgrey Wi_25Per  ">
-              <tr>
-                <td>
-                  <b>
-                    <?php //echo $data_items_0_items_key; ?>
-                  </b>
-                </td>
-
-              </tr>
-            </table> -->
-
-            <?php
-      //       // $subreports_html = $subreports_html.ob_get_contents();
-      //       // ob_end_clean();
-      //     // }
-      //   }
-      // }
-
-
 
       ob_start();
       ?>
 
-      <div class="Di_Fl Fl_Wr">
+      <div class="row">
 
-        <?php echo $subreports_html; ?>
+        <?php echo $reportdata_html; ?>
       </div>
-      <hr>
+
 
       <?php
-      $subreports_html = ob_get_contents();
+      $reportdata_html = ob_get_contents();
       ob_end_clean();
 
-      $page_html = $title_html.$subreports_html.$reportdata_html;
+      $page_html = $title_html.$reportdata_html;
       return $page_html;
 
     }
@@ -191,11 +146,15 @@ class report extends Model
         if ($report_object->ends_with($data_item_key, "_report") == null) {
           reset($data_item_value);
           $data_item_value_0 = key($data_item_value);
-          $data_item_value_0_value = $data_item_value[$data_item_value_0];
-          if (is_array($data_item_value_0_value)) {
-            $ItemWidth = "Wi_100Per";
-          } else {
-            $ItemWidth = "Wi_50Per";
+
+
+          $ItemWidth = "col-md-6";
+          if (isset($data_item_value[$data_item_value_0])) {
+            $data_item_value_0_value = $data_item_value[$data_item_value_0];
+            // code...
+            if (is_array($data_item_value_0_value)) {
+              $ItemWidth = "col-md-12";
+            }
           }
 
 
@@ -203,10 +162,10 @@ class report extends Model
           ob_start();
           ?>
           <div class=" <?php echo $ItemWidth ?>">
-            <h<?php echo $LayerNumber ?>>
+            <h<?php echo $LayerNumber ?> class="my-3">
               <?php echo $data_item_key; ?>
             </h<?php echo $LayerNumber ?>>
-            <div class="Di_Fl Fl_Wr">
+            <div class="row">
 
               <?php echo $report_object->show_html_helper($data_item_value,$LayerNumber) ?>
 
@@ -230,26 +189,30 @@ class report extends Model
       if (!is_array($data_item_value)){
 
         if ($LayerNumber < 1) {
-          $FieldWidth = "Wi_50Per";
+          $FieldWidth = "col-md-6";
         } else {
-          $FieldWidth = "Wi_100Per";
+          $FieldWidth = "col-md-12";
         }
         ob_start();
         ?>
-        <table  class="Pa_10px BoRa_10px Bo_1pxsolidgrey BoSi_CoBo  <?php echo $FieldWidth ?>">
+        <div class="<?php echo $FieldWidth ?>">
+          <!-- <table  class="rounded border border-secondary w-100" style="border-collapse: separate;"> -->
+          <table  class="p-2 rounded w-100" style="border-collapse: separate;">
 
-          <tr>
-            <td>
-              <b>
-                <?php echo $data_item_key; ?>
-              </b>
-            </td>
-            <td>
-              <?php echo $data_item_value ?>
-            </td>
+            <tr>
+              <td class="p-2">
+                <b>
+                  <?php echo $data_item_key; ?>
+                </b>
+              </td>
+              <td class="p-2">
+                <?php echo $data_item_value ?>
+              </td>
 
-          </tr>
-        </table>
+            </tr>
+          </table>
+
+        </div>
 
         <?php
         $result_part_1_loose_files = $result_part_1_loose_files.ob_get_contents();
@@ -263,9 +226,9 @@ class report extends Model
 
     ob_start();
     ?>
-    <div class="Di_Fl Fl_Wr">
+    <!-- <div class="Di_Fl Fl_Wr"> -->
       <?php echo $result_part_1_loose_files; ?>
-    </div>
+    <!-- </div> -->
     <?php
     $result_part_1_loose_files = ob_get_contents();
     ob_end_clean();
@@ -274,9 +237,9 @@ class report extends Model
 
     ob_start();
     ?>
-    <div class="Di_Fl Fl_Wr">
+    <!-- <div class="Di_Fl Fl_Wr"> -->
       <?php echo $result_part_2; ?>
-    </div>
+    <!-- </div> -->
     <?php
     $result_part_2 = ob_get_contents();
     ob_end_clean();

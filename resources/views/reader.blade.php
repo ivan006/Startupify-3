@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="{{ asset('vendor/file-manager/css/file-manager.css') }}">
 
   <style media="screen">
-  .BgCo_Grey {background-color: rgb(200,200,200);}
+  /* .BgCo_Grey {background-color: rgb(200,200,200);}
   .BgCo_White {background-color: white;}
   .Wi_700 {width: 700px;}
   .MarLe_Auto {margin-left: auto;}
@@ -32,19 +32,46 @@
   .Di_Fl {display: flex;}
   .Wi_100Per {width: 100%;}
   .BoSi_BoBo {box-sizing: border-box;}
-  .Fl_Wr {flex-wrap: wrap;}
+  .Fl_Wr {flex-wrap: wrap;} */
+
+  @media (min-width: 768px) {
+    .container-small {
+      width: 300px;
+    }
+    .container-large {
+      width: 970px;
+    }
+  }
+  @media (min-width: 992px) {
+    .container-small {
+      width: 500px;
+    }
+    .container-large {
+      width: 1170px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .container-small {
+      width: 700px;
+    }
+    .container-large {
+      width: 1500px;
+    }
+  }
+
+  .container-small, .container-large {
+    max-width: 100%;
+  }
   </style>
 
 
 </head>
-<body>
+<body class="bg-light">
 
 
-  <div class="Wi_700 BgCo_White MarLe_Auto MarRi_Auto Pa_10px BoRa_10px">
-    <div class="">
+  <div class="container container-small bg-white p-2 rounded my-2">
+    <?php echo $result ?>
 
-      <?php echo $result ?>
-    </div>
 
   </div>
 
