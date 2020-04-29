@@ -293,7 +293,7 @@ class report extends Model
       }
     }
 
-    $ShowLocation = storage_path()."\app\public\Blue Gem".$URI."\\";
+    $ShowLocation = storage_path()."\app\public\Blue Gem_report".$URI."\\";
 
 
     if (is_dir($ShowLocation)) {
