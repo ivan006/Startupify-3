@@ -43,3 +43,4 @@ https://stackoverflow.com/questions/619610/whats-the-most-efficient-test-of-whet
 https://stackoverflow.com/questions/619610/whats-the-most-efficient-test-of-whether-a-php-string-ends-with-another-string
 https://stackoverflow.com/questions/2192170/how-to-remove-part-of-a-string
 https://stackoverflow.com/questions/20984874/how-to-make-a-smaller-container-in-bootstrap
+https://stackoverflow.com/questions/8754826/how-to-disable-xdebug
