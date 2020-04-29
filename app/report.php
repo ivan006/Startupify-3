@@ -8,18 +8,18 @@ class report extends Model
 {
   public static function show($GET) {
     $report_object = new report;
-    $array = $report_object->show_array($GET);
+
     // dd($array);
-    $html = $report_object->show_html($array);
+    $html = $report_object->show_html();
     return $html;
   }
 
-  public function show_html($var) {
+  public function show_html() {
+
     $report_object = new report;
 
 
-    $data_items = $var;
-
+    $data_items = $report_object->show_array($_GET);
 
     if (!empty($data_items)) {
       reset($data_items);
@@ -55,7 +55,7 @@ class report extends Model
             <tr>
               <td class="p-2">
                 <b>
-                  
+
                   <a href="/reader/<?php echo $link ?>">Back</a>
                 </b>
               </td>

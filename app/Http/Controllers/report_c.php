@@ -9,11 +9,30 @@ class report_c extends Controller
 {
   public static function show() {
     $report_object = new report;
+
+
+    $result = $report_object->show($_GET);
+
+    $data_items = $report_object->show_array($_GET);
+    reset($data_items);
+    $title = key($data_items);
+    $title = $report_object->ends_with($title, "_report");
+
+    return view('welcome', compact('result','title'));
+
+  }
+
+  public static function edit() {
+    $report_object = new report;
     $GET = $_GET;
 
-    $result = $report_object->show($GET);
 
-    return view('welcome', compact('result'));
+    $data_items = $report_object->show_array($GET);
+    reset($data_items);
+    $title = key($data_items);
+    $title = $report_object->ends_with($title, "_report");
+
+    return view('home', compact('title'));
 
   }
 
