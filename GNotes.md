@@ -46,3 +46,4 @@ https://stackoverflow.com/questions/20984874/how-to-make-a-smaller-container-in-
 https://stackoverflow.com/questions/8754826/how-to-disable-xdebug
 https://stackoverflow.com/questions/19825227/laravel-composer-install-hangs-on-installing-dependencies-and-consume-a-lot-of
 https://auth0.com/blog/creating-your-first-laravel-app-and-adding-authentication/
+https://stackoverflow.com/questions/52891555/laravel-5-7-check-if-email-is-verified

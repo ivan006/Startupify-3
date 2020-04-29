@@ -73,7 +73,7 @@
 
         @media (min-width: 768px) {
           .container-small {
-            width: 300px;
+            width: 360px;
           }
           .container-large {
             width: 970px;
@@ -81,7 +81,7 @@
         }
         @media (min-width: 992px) {
           .container-small {
-            width: 500px;
+            width: 560px;
           }
           .container-large {
             width: 1170px;
@@ -89,7 +89,7 @@
         }
         @media (min-width: 1200px) {
           .container-small {
-            width: 700px;
+            width: 760px;
           }
           .container-large {
             width: 1500px;
@@ -122,7 +122,8 @@
           <div class="content">
 
 
-            <div class="container container-small bg-white p-2 rounded my-2">
+
+            <div class="container container-small bg-white p-5 rounded my-2">
               <?php echo $result ?>
 
 

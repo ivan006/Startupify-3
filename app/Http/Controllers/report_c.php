@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\report;
+use Illuminate\Support\Facades\Auth;
 
 class report_c extends Controller
 {
@@ -32,7 +33,11 @@ class report_c extends Controller
     $title = key($data_items);
     $title = $report_object->ends_with($title, "_report");
 
-    return view('home', compact('title'));
+    if(Auth::user()->email_verified_at) {
+      return view('home', compact('title'));
+    } else {
+      return redirect("");
+    }
 
   }
 

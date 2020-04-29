@@ -56,7 +56,7 @@ class report extends Model
               <td class="p-2">
                 <b>
 
-                  <a href="/reader/<?php echo $link ?>">Back</a>
+                  <a href="/<?php echo $link ?>">Back</a>
                 </b>
               </td>
 
@@ -96,7 +96,7 @@ class report extends Model
                   <tr>
                     <td class="p-2">
                       <b>
-                        <a href="/reader/<?php echo $link ?>">
+                        <a href="/<?php echo $link ?>">
                           <?php echo $report_object->ends_with($data_item_key, "_report") ?>
                         </a>
                       </b>
@@ -181,7 +181,7 @@ class report extends Model
           ob_start();
           ?>
           <div class=" <?php echo $ItemWidth ?>">
-            <h<?php echo $LayerNumber ?> class="my-3">
+            <h<?php echo $LayerNumber ?> class="" style="margin-top: <?php echo (1/$LayerNumber)*5*16 ?>px;">
               <?php echo $data_item_key; ?>
             </h<?php echo $LayerNumber ?>>
             <div class="row">
