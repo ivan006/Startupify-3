@@ -9,6 +9,7 @@ class report extends Model
   public static function show($GET) {
     $report_object = new report;
     $array = $report_object->show_array($GET);
+    // dd($array);
     $html = $report_object->show_html($array);
     return $html;
   }
@@ -291,6 +292,7 @@ class report extends Model
 
     if(!function_exists('App\ShowHelper')){
       function ShowHelper($ShowLocation) {
+        $report_object = new report;
         $result = array();
         $shallowList = scandir($ShowLocation);
 
@@ -301,8 +303,12 @@ class report extends Model
             $DataLocation = $ShowLocation . "/" . $value;
 
             if (is_dir($DataLocation)){
-
-              $result[$value] = ShowHelper($DataLocation);
+              // $result[$value] = ShowHelper($DataLocation);
+              if ($report_object->ends_with($value, "_report") == null) {
+                $result[$value] = ShowHelper($DataLocation);
+              } else {
+                $result[$value] = array();
+              }
             } else {
               $this_object = new report;
               $result[$value] = $this_object->read_file($DataLocation);
