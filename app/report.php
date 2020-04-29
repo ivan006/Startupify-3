@@ -45,8 +45,25 @@ class report extends Model
       <h1 class="my-3">
         <?php echo $report_object->ends_with($data_items_0, "_report") ?>
       </h1>
-      <a href="/reader/<?php echo $link ?>">Back</a>
+
       <hr>
+
+      <div class="row">
+        <div class="col-md-3">
+          <!-- <table  class="rounded border border-secondary w-100" style="border-collapse: separate;"> -->
+          <table  class="p-2 rounded w-100" style="border-collapse: separate;">
+            <tr>
+              <td class="p-2">
+                <b>
+                  
+                  <a href="/reader/<?php echo $link ?>">Back</a>
+                </b>
+              </td>
+
+            </tr>
+          </table>
+
+        </div>
       <?php
       foreach ($data_items[$data_items_0] as $data_item_key => $data_item_value) {
         // echo $data_item_key;
@@ -72,7 +89,6 @@ class report extends Model
 
             $link = $link.$separator.$i."=".$data_item_key;
             ?>
-            <div class="row">
 
               <div class="col-md-3">
                 <!-- <table  class="rounded border border-secondary w-100" style="border-collapse: separate;"> -->
@@ -90,14 +106,17 @@ class report extends Model
                 </table>
 
               </div>
-            </div>
-            <hr>
             <?php
 
           }
 
         }
       }
+      ?>
+      </div>
+      <hr>
+
+      <?php
 
 
       $title_html = ob_get_contents();
