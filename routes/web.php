@@ -25,4 +25,7 @@ Route::get('', 'report_c@show');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', ['middleware' => ['auth'],'uses' => function () {
+  return view('home');
+}])
+->name('home');

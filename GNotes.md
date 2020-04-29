@@ -45,3 +45,4 @@ https://stackoverflow.com/questions/2192170/how-to-remove-part-of-a-string
 https://stackoverflow.com/questions/20984874/how-to-make-a-smaller-container-in-bootstrap
 https://stackoverflow.com/questions/8754826/how-to-disable-xdebug
 https://stackoverflow.com/questions/19825227/laravel-composer-install-hangs-on-installing-dependencies-and-consume-a-lot-of
+https://auth0.com/blog/creating-your-first-laravel-app-and-adding-authentication/

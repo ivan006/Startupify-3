@@ -10,10 +10,10 @@ class report_c extends Controller
   public static function show() {
     $report_object = new report;
     $GET = $_GET;
-    
+
     $result = $report_object->show($GET);
 
-    return view('reader', compact('result'));
+    return view('welcome', compact('result'));
 
   }
 
