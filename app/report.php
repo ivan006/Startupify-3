@@ -94,7 +94,7 @@ class report extends Model
                 <!-- <table  class="rounded border border-secondary w-100" style="border-collapse: separate;"> -->
                 <table  class="p-2 rounded w-100" style="border-collapse: separate;">
                   <tr>
-                    <td class="p-2">
+                    <td class="p-2 ">
                       <b>
                         <a href="/<?php echo $link ?>">
                           <?php echo $report_object->ends_with($data_item_key, "_report") ?>
@@ -219,12 +219,12 @@ class report extends Model
           <table  class="p-2 rounded w-100" style="border-collapse: separate;">
 
             <tr>
-              <td class="p-2">
+              <td class="p-2 w-50" style="vertical-align: text-top;">
                 <b>
                   <?php echo $data_item_key; ?>
                 </b>
               </td>
-              <td class="p-2">
+              <td class="p-2 w-50">
                 <?php echo $data_item_value ?>
               </td>
 
