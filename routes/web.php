@@ -13,15 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-// Route::get('/reader', function () {
-//   return view('reader');
+// Route::get('/', function () {
+//     return view('reader');
 // });
 
-Route::get('/reader', 'report_c@show');
+// Route::get('/', function () {
+//   return view('welcome');
+// });
+
+Route::get('', 'report_c@show');
 
 Auth::routes();
 
