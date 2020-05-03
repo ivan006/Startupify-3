@@ -312,7 +312,7 @@ class report extends Model
       }
     }
 
-    $ShowLocation = storage_path()."\app\public\Blue Gem_report".$URI."\\";
+    $ShowLocation = storage_path()."\app\public\Ivan Copeland_report".$URI."\\";
 
 
     if (is_dir($ShowLocation)) {

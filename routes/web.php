@@ -26,3 +26,4 @@ Route::get('', 'report_c@show');
 Auth::routes();
 
 Route::get('/home', ['middleware' => ['auth'],'uses' => 'report_c@edit'])->name('home');
+// Route::get('/home', 'report_c@edit')->name('home');

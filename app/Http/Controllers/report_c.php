@@ -35,9 +35,9 @@ class report_c extends Controller
 
     if(Auth::user()->email_verified_at) {
       return view('home', compact('title'));
-    } else {
-      return redirect("");
     }
+    return redirect("");
+
 
   }
 

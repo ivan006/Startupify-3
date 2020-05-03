@@ -47,3 +47,13 @@ https://stackoverflow.com/questions/8754826/how-to-disable-xdebug
 https://stackoverflow.com/questions/19825227/laravel-composer-install-hangs-on-installing-dependencies-and-consume-a-lot-of
 https://auth0.com/blog/creating-your-first-laravel-app-and-adding-authentication/
 https://stackoverflow.com/questions/52891555/laravel-5-7-check-if-email-is-verified
+
+google: get height of dom php
+https://stackoverflow.com/questions/29775617/get-height-of-a-division-in-php-using-simple-html-dom
+https://stackoverflow.com/questions/29833243/simple-html-dom-trying-to-find-height-in-google-search
+https://www.codementor.io/@wang90925/top-10-best-usage-examples-of-php-simple-html-dom-parser-i8ik76e16
+google: paginate by height simple_html_dom
+https://stackoverflow.com/questions/19201715/how-do-i-get-a-page-to-auto-fit-to-a-window
+https://tympanus.net/codrops/css_reference/page-break-before/
+https://stackoverflow.com/questions/49214943/how-use-simple-html-dom-in-laravel
+google: laravel simple_html_dom get dom height
