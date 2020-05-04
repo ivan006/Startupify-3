@@ -15,9 +15,14 @@ class report_c extends Controller
     $result = $report_object->show($_GET);
 
     $data_items = $report_object->show_array($_GET);
-    reset($data_items);
-    $title = key($data_items);
-    $title = $report_object->ends_with($title, "_report");
+
+    $title = "";
+
+    if (!empty($data_items)) {
+      reset($data_items);
+      $title = key($data_items);
+      $title = $report_object->ends_with($title, "_report");
+    }
 
     return view('welcome', compact('result','title'));
 
@@ -29,9 +34,16 @@ class report_c extends Controller
 
 
     $data_items = $report_object->show_array($GET);
-    reset($data_items);
-    $title = key($data_items);
-    $title = $report_object->ends_with($title, "_report");
+
+
+    $title = "";
+
+    if (!empty($data_items)) {
+      reset($data_items);
+      $title = key($data_items);
+      $title = $report_object->ends_with($title, "_report");
+
+    }
 
     if(Auth::user()->email_verified_at) {
       return view('home', compact('title'));
