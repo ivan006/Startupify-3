@@ -18,7 +18,6 @@ class report extends Model
 
     $report_object = new report;
 
-
     $data_items = $report_object->show_array($_GET);
 
     if (!empty($data_items)) {
@@ -308,11 +307,20 @@ class report extends Model
     $URI = "";
     if (!empty($GET)) {
       foreach ($GET as $key => $value) {
-        $URI = $URI."\\".$value;
+        $URI = $URI."/".$value;
       }
     }
 
-    $ShowLocation = storage_path()."\app\public\Ivan Copeland_report".$URI."\\";
+    $pub_store = storage_path()."/app/public/";
+    $base_report = scandir($pub_store);
+    if (isset($base_report[2])) {
+      $base_report = $base_report[2];
+    } else {
+      $base_report = "fake_dir_name";
+    }
+    // var_dump($base_report);
+
+    $ShowLocation = $pub_store.$base_report.$URI."/";
 
 
     if (is_dir($ShowLocation)) {
