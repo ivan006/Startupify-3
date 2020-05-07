@@ -131,7 +131,7 @@ class report extends Model
 
       $data_items_0_items = $data_items[$data_items_0];
 
-      $reportdata_html =  $reportdata_html . $report_object->show_html_helper($data_items_0_items["content"],1);
+      $reportdata_html =  $reportdata_html . $report_object->show_html_helper($data_items_0_items["content"],1,0);
 
 
       ob_start();
@@ -152,7 +152,7 @@ class report extends Model
     }
   }
 
-  public function show_html_helper($data_items, $LayerNumber){
+  public function show_html_helper($data_items, $LayerNumber, $restrict_width_count){
     $report_object = new report;
 
     $LayerNumber = $LayerNumber+1;
@@ -185,8 +185,10 @@ class report extends Model
           // }
 
           $restrict_width_toggle = "Wi_100Per";
-          if ($data_item_value["size"] < 250) {
+          $restrict_width_count_new = $restrict_width_count;
+          if ($data_item_value["size"] < 250 AND $restrict_width_count < 1) {
             $restrict_width_toggle = "InBl_Wi_50Per";
+            $restrict_width_count_new = $restrict_width_count+1;
           }
 
 
@@ -199,7 +201,7 @@ class report extends Model
             </h<?php echo $LayerNumber ?>>
 
             <div class="">
-              <?php echo $report_object->show_html_helper($data_item_value["content"],$LayerNumber) ?>
+              <?php echo $report_object->show_html_helper($data_item_value["content"],$LayerNumber,$restrict_width_count_new) ?>
             </div>
 
 
@@ -220,7 +222,7 @@ class report extends Model
       if (!is_array($data_item_value["content"])){
 
         $restrict_width_toggle = "Wi_100Per";
-        if ($data_item_value["size"] < 50) {
+        if ($data_item_value["size"] < 50 AND $restrict_width_count < 1) {
           $restrict_width_toggle = "InBl_Wi_50Per";
         }
         // $restrict_width_toggle
