@@ -225,10 +225,12 @@ class report extends Model
 
         $key_value_width = "Wi_100Per";
         $restrict_width_toggle = "Wi_100Per";
+        $is_small_toggle = 0;
         if ($data_item_value["size"] < 50 AND $restrict_width_count < 1) {
           $restrict_width_toggle = "InBl_Wi_50Per";
 
           $key_value_width = "InBl_Wi_50Per";
+          $is_small_toggle = 1;
 
         }
         ?>
@@ -243,8 +245,17 @@ class report extends Model
           </div>
           <div class="<?php echo $key_value_width ?>  d-inline-block ">
             <div class="p-2">
+              <?php
+              if ($is_small_toggle == 0) {
+                echo "<pre>";
+                echo $data_item_value["content"];
+                echo "</pre>";
+              } else {
+                echo $data_item_value["content"];
+              }
+              ?>
 
-              <?php echo $data_item_value["content"] ?>
+
             </div>
           </div>
         </div>

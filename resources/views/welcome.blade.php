@@ -78,9 +78,6 @@
           .container-small {
             width: 360px;
           }
-          .container-a4 {
-            width: 360px;
-          }
         }
         @media (min-width: 992px) {
           .container-large {
@@ -89,9 +86,6 @@
           .container-small {
             width: 560px;
           }
-          .container-a4 {
-            width: 900px;
-          }
         }
         @media (min-width: 1200px) {
           .container-large {
@@ -99,9 +93,6 @@
           }
           .container-small {
             width: 760px;
-          }
-          .container-a4 {
-            width: 900px;
           }
         }
 
@@ -143,7 +134,7 @@
 
 
 
-            <div class="container container-a4 bg-white Pa_50px rounded my-2">
+            <div class="container container-small bg-white Pa_50px rounded my-2">
               <?php echo $result ?>
 
 
