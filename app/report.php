@@ -19,6 +19,8 @@ class report extends Model
     $report_object = new report;
 
     $data_items = $report_object->show_array($_GET);
+    // echo "<pre>";
+    // var_dump($data_items);
 
     if (!empty($data_items)) {
       reset($data_items);
@@ -130,12 +132,11 @@ class report extends Model
 
       ob_start();
       ?>
-
-      <div class="row">
+      <!-- <div style="text-align: center;"> -->
+      <div style="">
 
         <?php echo $reportdata_html; ?>
       </div>
-
 
       <?php
       $reportdata_html = ob_get_contents();
@@ -166,14 +167,20 @@ class report extends Model
           $data_item_value_0 = key($data_item_value);
 
 
-          $ItemWidth = "col-md-6";
+          $ItemWidth = "InBl_Wi_400px";
           if (isset($data_item_value[$data_item_value_0])) {
             $data_item_value_0_value = $data_item_value[$data_item_value_0];
             // code...
             if (is_array($data_item_value_0_value)) {
-              $ItemWidth = "col-md-12";
+              $ItemWidth = "Wi_800px";
             }
           }
+          // $ItemWidth = "Wi_800px";
+
+          // $FieldWidth = "Wi_800px";
+          // if (strlen($data_item_value) < 50) {
+          //   $FieldWidth = "InBl_Wi_400px";
+          // }
 
 
 
@@ -183,14 +190,10 @@ class report extends Model
             <h<?php echo $LayerNumber ?> class="" style="margin-top: <?php echo (1/$LayerNumber)*5*16 ?>px;">
               <?php echo $data_item_key; ?>
             </h<?php echo $LayerNumber ?>>
-            <div class="row">
 
-              <?php echo $report_object->show_html_helper($data_item_value,$LayerNumber) ?>
 
-            </div>
-
+            <?php echo $report_object->show_html_helper($data_item_value,$LayerNumber) ?>
           </div>
-
           <?php
 
           $result_part_2 = $result_part_2.ob_get_contents();
@@ -206,14 +209,15 @@ class report extends Model
     foreach ($data_items as $data_item_key => $data_item_value) {
       if (!is_array($data_item_value)){
 
-        if ($LayerNumber < 1) {
-          $FieldWidth = "col-md-6";
-        } else {
-          $FieldWidth = "col-md-12";
+        $FieldWidth = "Wi_800px";
+        if (strlen($data_item_value) < 50) {
+          $FieldWidth = "InBl_Wi_400px";
         }
+        // $restrict_width_toggle
+
         ob_start();
         ?>
-        <div class="<?php echo $FieldWidth ?>">
+        <div class="<?php echo $FieldWidth ?> d-inline-block BoSi_BoBo">
           <!-- <table  class="rounded border border-secondary w-100" style="border-collapse: separate;"> -->
           <table  class="p-2 rounded w-100" style="border-collapse: separate;">
 
@@ -229,8 +233,9 @@ class report extends Model
 
             </tr>
           </table>
-
         </div>
+
+
 
         <?php
         $result_part_1_loose_files = $result_part_1_loose_files.ob_get_contents();

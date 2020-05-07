@@ -110,12 +110,17 @@
         }
 
         .Pa_50px {padding: 50px;}
+        .Wi_800px {width: 800px;}
+        .Wi_400px {width: 400px;}
+        .InBl_Wi_400px {width: 397px;}
+        .BoSi_BoBo {box-sizing: border-box;}
         </style>
     </head>
     <body class="bg-light">
 
         <!-- <div class="flex-center position-ref full-height"> -->
-        <div class="flex-center position-ref ">
+        <!-- <div class="flex-center position-ref "> -->
+        <div class=" ">
 
           @if (Route::has('login'))
           <div class="top-right links">

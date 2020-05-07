@@ -59,3 +59,10 @@ https://stackoverflow.com/questions/49214943/how-use-simple-html-dom-in-laravel
 google: laravel simple_html_dom get dom height
 google: insta;l dropbox on sevrer
 https://help.dropbox.com/installs-integrations/desktop/server-hosting
+https://codepen.io/Niklan/pen/vXzBpE
+https://stackoverflow.com/questions/28077976/php-get-string-length-of-each-element-in-an-array
+google: blank character between divs
+https://stackoverflow.com/questions/33454734/remove-space-between-divs
+https://stackoverflow.com/questions/19038799/why-is-there-an-unexplainable-gap-between-these-inline-block-div-elements
+https://stackoverflow.com/questions/36096319/remove-white-spaces-between-tags-in-html
+google: a4 paper in pxiels
