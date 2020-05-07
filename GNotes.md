@@ -57,3 +57,5 @@ https://stackoverflow.com/questions/19201715/how-do-i-get-a-page-to-auto-fit-to-
 https://tympanus.net/codrops/css_reference/page-break-before/
 https://stackoverflow.com/questions/49214943/how-use-simple-html-dom-in-laravel
 google: laravel simple_html_dom get dom height
+google: insta;l dropbox on sevrer
+https://help.dropbox.com/installs-integrations/desktop/server-hosting

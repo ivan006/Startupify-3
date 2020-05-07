@@ -338,11 +338,13 @@ class report extends Model
 
     if (file_exists($DataLocation)){
       if (mime_content_type($DataLocation) == "image/jpeg") {
-        $type = pathinfo($DataLocation, PATHINFO_EXTENSION);
-        $data = file_get_contents($DataLocation);
-        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+        $result = "";
+        // $result = $DataLocation;
+        // $type = pathinfo($result, PATHINFO_EXTENSION);
+        // $result = file_get_contents($result);
+        // $result = 'data:image/' . $type . ';base64,' . base64_encode($result);
 
-        $result = $base64;
+
       } elseif (mime_content_type($DataLocation) == "text/plain" OR mime_content_type($DataLocation) == "text/html") {
 
         $result = file_get_contents($DataLocation);
