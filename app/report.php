@@ -200,7 +200,7 @@ class report extends Model
               <?php echo $data_item_key; ?>
             </h<?php echo $LayerNumber ?>>
 
-            <div class="">
+            <div class="rounded p-2" style="border: solid 1px Gainsboro;">
               <?php echo $report_object->show_html_helper($data_item_value["content"],$LayerNumber,$restrict_width_count_new) ?>
             </div>
 
@@ -221,39 +221,35 @@ class report extends Model
     foreach ($data_items as $data_item_key => $data_item_value) {
       if (!is_array($data_item_value["content"])){
 
+        ob_start();
+
+        $key_value_width = "Wi_100Per";
         $restrict_width_toggle = "Wi_100Per";
         if ($data_item_value["size"] < 50 AND $restrict_width_count < 1) {
           $restrict_width_toggle = "InBl_Wi_50Per";
-        }
-        // $restrict_width_toggle
 
-        ob_start();
+          $key_value_width = "InBl_Wi_50Per";
+
+        }
         ?>
         <div class="<?php echo $restrict_width_toggle ?>  d-inline-block BoSi_BoBo">
           <!-- <table  class="rounded border border-secondary w-100" style="border-collapse: separate;"> -->
-
-          <div class="InBl_Wi_50Per  d-inline-block " >
+          <div class="<?php echo $key_value_width ?>  d-inline-block " >
             <div class="p-2">
-
               <b>
                 <?php echo $data_item_key; ?>
               </b>
             </div>
           </div>
-          <div class="InBl_Wi_50Per  d-inline-block ">
+          <div class="<?php echo $key_value_width ?>  d-inline-block ">
             <div class="p-2">
 
               <?php echo $data_item_value["content"] ?>
             </div>
-
           </div>
-
-
         </div>
-
-
-
         <?php
+        // $restrict_width_toggle
         $result_part_1_loose_files = $result_part_1_loose_files.ob_get_contents();
 
         ob_end_clean();
