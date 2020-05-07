@@ -116,7 +116,6 @@
 
         .Wi_100Per {width: 100%;}
         .InBl_Wi_50Per {width: calc(50% - 3px);}
-        .MiWi_100px {min-width: 100px;}
 
         .BoSi_BoBo {box-sizing: border-box;}
         </style>

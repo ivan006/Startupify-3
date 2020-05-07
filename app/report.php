@@ -175,27 +175,27 @@ class report extends Model
 
           // reset($data_item_value["content"]);
           // $data_item_value_0 = key($data_item_value["content"]);
-          // $ItemWidth = "InBl_Wi_50Per";
+          // $restrict_width_toggle = "InBl_Wi_50Per";
           // if (isset($data_item_value["content"][$data_item_value_0])) {
           //   $data_item_value_0_value = $data_item_value["content"][$data_item_value_0];
           //   // code...
           //   if (is_array($data_item_value_0_value)) {
-          //     $ItemWidth = "Wi_100Per";
+          //     $restrict_width_toggle = "Wi_100Per";
           //   }
           // }
 
-          $ItemWidth = "Wi_100Per";
+          $restrict_width_toggle = "Wi_100Per";
           if ($data_item_value["size"] < 250) {
-            $ItemWidth = "InBl_Wi_50Per";
+            $restrict_width_toggle = "InBl_Wi_50Per";
           }
 
 
 
           ob_start();
           ?>
-          <div class=" <?php echo $ItemWidth ?> d-inline-block ">
+          <div class=" <?php echo $restrict_width_toggle ?> d-inline-block ">
             <h<?php echo $LayerNumber ?> class="" style="margin-top: <?php echo (1/$LayerNumber)*5*16 ?>px;">
-              <?php echo $data_item_key; ?> (.. <?php echo $ItemWidth ?> ..)
+              <?php echo $data_item_key; ?>
             </h<?php echo $LayerNumber ?>>
 
             <div class="">
@@ -219,30 +219,34 @@ class report extends Model
     foreach ($data_items as $data_item_key => $data_item_value) {
       if (!is_array($data_item_value["content"])){
 
-        $FieldWidth = "Wi_100Per";
+        $restrict_width_toggle = "Wi_100Per";
         if ($data_item_value["size"] < 50) {
-          $FieldWidth = "InBl_Wi_50Per";
+          $restrict_width_toggle = "InBl_Wi_50Per";
         }
         // $restrict_width_toggle
 
         ob_start();
         ?>
-        <div class="<?php echo $FieldWidth ?> d-inline-block BoSi_BoBo">
+        <div class="<?php echo $restrict_width_toggle ?>  d-inline-block BoSi_BoBo">
           <!-- <table  class="rounded border border-secondary w-100" style="border-collapse: separate;"> -->
-          <table  class="p-2 rounded w-100" style="border-collapse: separate;">
 
-            <tr>
-              <td class="p-2 w-50" style="vertical-align: text-top;">
-                <b>
-                  <?php echo $data_item_key; ?>
-                </b>
-              </td>
-              <td class="p-2 w-50">
-                <?php echo $data_item_value["content"] ?>
-              </td>
+          <div class="InBl_Wi_50Per  d-inline-block " >
+            <div class="p-2">
 
-            </tr>
-          </table>
+              <b>
+                <?php echo $data_item_key; ?>
+              </b>
+            </div>
+          </div>
+          <div class="InBl_Wi_50Per  d-inline-block ">
+            <div class="p-2">
+
+              <?php echo $data_item_value["content"] ?>
+            </div>
+
+          </div>
+
+
         </div>
 
 
