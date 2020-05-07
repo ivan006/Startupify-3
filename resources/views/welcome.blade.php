@@ -72,33 +72,44 @@
 
 
         @media (min-width: 768px) {
-          .container-small {
-            width: 360px;
-          }
           .container-large {
             width: 970px;
           }
+          .container-small {
+            width: 360px;
+          }
+          .container-a4 {
+            width: 360px;
+          }
         }
         @media (min-width: 992px) {
-          .container-small {
-            width: 560px;
-          }
           .container-large {
             width: 1170px;
           }
+          .container-small {
+            width: 560px;
+          }
+          .container-a4 {
+            width: 900px;
+          }
         }
         @media (min-width: 1200px) {
+          .container-large {
+            width: 1500px;
+          }
           .container-small {
             width: 760px;
           }
-          .container-large {
-            width: 1500px;
+          .container-a4 {
+            width: 900px;
           }
         }
 
         .container-small, .container-large {
           max-width: 100%;
         }
+
+        .Pa_50px {padding: 50px;}
         </style>
     </head>
     <body class="bg-light">
@@ -123,7 +134,7 @@
 
 
 
-            <div class="container container-small bg-white p-5 rounded my-2">
+            <div class="container container-a4 bg-white Pa_50px rounded my-2">
               <?php echo $result ?>
 
 
