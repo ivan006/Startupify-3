@@ -113,6 +113,11 @@
         .Wi_800px {width: 800px;}
         .Wi_400px {width: 400px;}
         .InBl_Wi_400px {width: 397px;}
+
+        .Wi_100Per {width: 100%;}
+        .InBl_Wi_50Per {width: calc(50% - 3px);}
+        .MiWi_100px {min-width: 100px;}
+
         .BoSi_BoBo {box-sizing: border-box;}
         </style>
     </head>

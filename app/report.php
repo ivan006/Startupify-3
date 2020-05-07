@@ -171,32 +171,31 @@ class report extends Model
 
       if (is_array($data_item_value["content"])) {
         if ($report_object->ends_with($data_item_key, "_report") == null) {
-          reset($data_item_value["content"]);
-          $data_item_value_0 = key($data_item_value["content"]);
 
 
-          $ItemWidth = "InBl_Wi_400px";
-          if (isset($data_item_value["content"][$data_item_value_0])) {
-            $data_item_value_0_value = $data_item_value["content"][$data_item_value_0];
-            // code...
-            if (is_array($data_item_value_0_value)) {
-              $ItemWidth = "Wi_800px";
-            }
-          }
-          // $ItemWidth = "Wi_800px";
-
-          // $FieldWidth = "Wi_800px";
-          // if (strlen($data_item_value["content"]) < 50) {
-          //   $FieldWidth = "InBl_Wi_400px";
+          // reset($data_item_value["content"]);
+          // $data_item_value_0 = key($data_item_value["content"]);
+          // $ItemWidth = "InBl_Wi_50Per";
+          // if (isset($data_item_value["content"][$data_item_value_0])) {
+          //   $data_item_value_0_value = $data_item_value["content"][$data_item_value_0];
+          //   // code...
+          //   if (is_array($data_item_value_0_value)) {
+          //     $ItemWidth = "Wi_100Per";
+          //   }
           // }
+
+          $ItemWidth = "Wi_100Per";
+          if ($data_item_value["size"] < 250) {
+            $ItemWidth = "InBl_Wi_50Per";
+          }
 
 
 
           ob_start();
           ?>
-          <div class=" <?php echo $ItemWidth ?>">
+          <div class=" <?php echo $ItemWidth ?> d-inline-block ">
             <h<?php echo $LayerNumber ?> class="" style="margin-top: <?php echo (1/$LayerNumber)*5*16 ?>px;">
-              <?php echo $data_item_key; ?>
+              <?php echo $data_item_key; ?> (.. <?php echo $ItemWidth ?> ..)
             </h<?php echo $LayerNumber ?>>
 
             <div class="">
@@ -220,9 +219,9 @@ class report extends Model
     foreach ($data_items as $data_item_key => $data_item_value) {
       if (!is_array($data_item_value["content"])){
 
-        $FieldWidth = "Wi_800px";
-        if (strlen($data_item_value["content"]) < 50) {
-          $FieldWidth = "InBl_Wi_400px";
+        $FieldWidth = "Wi_100Per";
+        if ($data_item_value["size"] < 50) {
+          $FieldWidth = "InBl_Wi_50Per";
         }
         // $restrict_width_toggle
 
