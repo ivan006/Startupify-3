@@ -66,3 +66,7 @@ https://stackoverflow.com/questions/33454734/remove-space-between-divs
 https://stackoverflow.com/questions/19038799/why-is-there-an-unexplainable-gap-between-these-inline-block-div-elements
 https://stackoverflow.com/questions/36096319/remove-white-spaces-between-tags-in-html
 google: a4 paper in pxiels
+google: count character in array
+https://stackoverflow.com/questions/47175723/count-characters-in-an-array-of-character-strings
+https://stackoverflow.com/questions/19057218/php-json-encode-json-pretty-print-how-to-print-a-different-format
+https://stackoverflow.com/questions/19361282/why-would-json-encode-return-an-empty-string

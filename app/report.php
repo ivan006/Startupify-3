@@ -19,8 +19,12 @@ class report extends Model
     $report_object = new report;
 
     $data_items = $report_object->show_array($_GET);
+
     // echo "<pre>";
-    // var_dump($data_items);
+    // $data_items = json_encode($data_items, JSON_PRETTY_PRINT);
+    // echo $data_items ;
+    // exit;
+    // dd($data_items);
 
     if (!empty($data_items)) {
       reset($data_items);
@@ -66,7 +70,7 @@ class report extends Model
 
         </div>
       <?php
-      foreach ($data_items[$data_items_0] as $data_item_key => $data_item_value) {
+      foreach ($data_items[$data_items_0]["content"] as $data_item_key => $data_item_value) {
         // echo $data_item_key;
         // echo "<br>";
         if (is_array($data_item_value)) {
@@ -127,7 +131,7 @@ class report extends Model
 
       $data_items_0_items = $data_items[$data_items_0];
 
-      $reportdata_html =  $reportdata_html . $report_object->show_html_helper($data_items_0_items,1);
+      $reportdata_html =  $reportdata_html . $report_object->show_html_helper($data_items_0_items["content"],1);
 
 
       ob_start();
@@ -158,18 +162,22 @@ class report extends Model
 
     $result_part_2 = "";
 
+    // if (!isset($data_items["content"])) {
+    //   dd($data_items);
+    // }
     foreach ($data_items as $data_item_key => $data_item_value) {
       // echo $data_item_key;
       // echo "<br>";
-      if (is_array($data_item_value)) {
+
+      if (is_array($data_item_value["content"])) {
         if ($report_object->ends_with($data_item_key, "_report") == null) {
-          reset($data_item_value);
-          $data_item_value_0 = key($data_item_value);
+          reset($data_item_value["content"]);
+          $data_item_value_0 = key($data_item_value["content"]);
 
 
           $ItemWidth = "InBl_Wi_400px";
-          if (isset($data_item_value[$data_item_value_0])) {
-            $data_item_value_0_value = $data_item_value[$data_item_value_0];
+          if (isset($data_item_value["content"][$data_item_value_0])) {
+            $data_item_value_0_value = $data_item_value["content"][$data_item_value_0];
             // code...
             if (is_array($data_item_value_0_value)) {
               $ItemWidth = "Wi_800px";
@@ -178,7 +186,7 @@ class report extends Model
           // $ItemWidth = "Wi_800px";
 
           // $FieldWidth = "Wi_800px";
-          // if (strlen($data_item_value) < 50) {
+          // if (strlen($data_item_value["content"]) < 50) {
           //   $FieldWidth = "InBl_Wi_400px";
           // }
 
@@ -191,8 +199,11 @@ class report extends Model
               <?php echo $data_item_key; ?>
             </h<?php echo $LayerNumber ?>>
 
+            <div class="">
+              <?php echo $report_object->show_html_helper($data_item_value["content"],$LayerNumber) ?>
+            </div>
 
-            <?php echo $report_object->show_html_helper($data_item_value,$LayerNumber) ?>
+
           </div>
           <?php
 
@@ -207,10 +218,10 @@ class report extends Model
 
     $result_part_1_loose_files = "";
     foreach ($data_items as $data_item_key => $data_item_value) {
-      if (!is_array($data_item_value)){
+      if (!is_array($data_item_value["content"])){
 
         $FieldWidth = "Wi_800px";
-        if (strlen($data_item_value) < 50) {
+        if (strlen($data_item_value["content"]) < 50) {
           $FieldWidth = "InBl_Wi_400px";
         }
         // $restrict_width_toggle
@@ -228,7 +239,7 @@ class report extends Model
                 </b>
               </td>
               <td class="p-2 w-50">
-                <?php echo $data_item_value ?>
+                <?php echo $data_item_value["content"] ?>
               </td>
 
             </tr>
@@ -282,6 +293,8 @@ class report extends Model
         $result = array();
         $shallowList = scandir($ShowLocation);
 
+        $size_sum = 0;
+        // $result["content"] = array();
 
         foreach ($shallowList as $key => $value) {
 
@@ -289,19 +302,27 @@ class report extends Model
             $DataLocation = $ShowLocation . "/" . $value;
 
             if (is_dir($DataLocation)){
-              // $result[$value] = ShowHelper($DataLocation);
+              // $result["content"][$value] = ShowHelper($DataLocation);
               if ($report_object->ends_with($value, "_report") == null) {
-                $result[$value] = ShowHelper($DataLocation);
+                $result["content"][$value] = ShowHelper($DataLocation);
+
               } else {
-                $result[$value] = array();
+                $result["content"][$value]["content"] = array();
+                $result["content"][$value]["size"] = 0;
               }
             } else {
               $this_object = new report;
-              $result[$value] = $this_object->read_file($DataLocation);
+              $result["content"][$value]["content"] = $this_object->read_file($DataLocation);
+              $result["content"][$value]["size"] = strlen($result["content"][$value]["content"]);
 
             }
+
+            $size_sum = $size_sum+$result["content"][$value]["size"];
           }
         }
+
+        $result["size"] = $size_sum;
+
         return  $result;
       }
     }
@@ -330,7 +351,9 @@ class report extends Model
 
     if (is_dir($ShowLocation)) {
 
-      $Show =   array(basename($ShowLocation) => ShowHelper($ShowLocation));
+      $Show =   array(
+        basename($ShowLocation) => ShowHelper($ShowLocation)
+      );
 
       return $Show;
     }
