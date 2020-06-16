@@ -14,6 +14,11 @@ This system can facilitate normal business data. Both internal and external comm
 Although this is theoretically a good system for startup businesses it may have problems later. Eventually migrating your data to a relational format hasn't yet been conceptualised.
 
 
+# Reportify 3 tutorial
+
+<img src="https://raw.githubusercontent.com/ivan006/Startupify-3/master/aa.png">
+
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
@@ -22,10 +27,6 @@ Although this is theoretically a good system for startup businesses it may have 
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
-
-# Reportify 3 tutorial
-
-<img src="https://raw.githubusercontent.com/ivan006/Startupify-3/master/aa.png">
 
 ## About Laravel
 
